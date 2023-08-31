@@ -33,7 +33,7 @@
               <img src="img/Logo.png" alt="">
             </div>
             <div class="navbar-center hidden lg:flex">
-              <h4 class="font-medium text-lg bg-[#25252533] px-4 py-2 rounded-lg text-[#252525]">Sort by view</h4>
+              <h4 class="font-medium text-lg bg-[#25252533] px-4 py-2 rounded-lg text-[#252525] cursor-pointer">Sort by view</h4>
             </div>
             <div class="navbar-end">
               <a class="font-medium text-lg bg-[#FF1F3D] px-4 py-2 rounded-lg text-white" href="blog.html">Blog</a>
@@ -41,7 +41,38 @@
           </div>
           <hr class="text-[#11111133] border">
     </header>
-
-    <main></main>
+    <main>
+        <section class="mt-8">
+            <!-- tab section  -->
+            <div class="tabs text-[#252525B3] text-lg font-medium flex justify-center gap-3">
+                <a class="tab text-[#252525B3] bg-[#25252526]">Tab 1</a> 
+                <a class="tab text-[#252525B3] bg-[#25252526] ">Tab 2</a> 
+                <a class="tab text-[#252525B3] bg-[#25252526]">Tab 3</a>
+                <a class="tab text-[#252525B3] bg-[#25252526]">Tab 4</a>
+              </div>
+              <!-- card  -->
+              <div class="mt-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div class="card shadow-xl">
+                    <figure class="relative">
+                        <img  src="img/rectangle.png" alt="" />
+                        <div class="absolute bottom-2 right-9">
+                            <p class="bg-[#171717] p-2 text-white text-xs font-normal rounded-md">3hour 56 minute ago</p></div>
+                    </figure>
+                    
+                    <div class="card-body">
+                            <div class="rounded-full flex items-start gap-4">
+                              <img src="img/Ellipse.svg" />
+                              <div class="">
+                                <h4 class="text-base font-bold text-[#171717]">Building a Winning UX Strategy Using the Kano Model</h4>
+                                <p class="mt-1 text-sm font-normal text-[#111111B3]">Awlad Hossain <span></span></p>
+                                <p class="mt-1 text-sm font-normal text-[#111111B3]">90k views</p>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+        </section>
+    </main>
   </body>
 </html>
