@@ -24,34 +24,38 @@ const handleLoadData = async (categoryId) => {
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
   );
   const data = await res.json();
-
   //   card container
+  console.log(data.data.length);
   const cardContainer = document.getElementById("card-container");
-  // click & clear card container 
-  cardContainer.innerHTML = '';
-  
-  //   forEach categoryId
-  data.data.forEach((containerCardItem) => {
-    const div = document.createElement("div");
+  // No data container
+  const noDataContainer = document.getElementById("no-data");
+  // click & clear card container
+  cardContainer.innerHTML = "";
+  noDataContainer.innerHTML = "";
 
-    // upload time
-    const uploadTime = (time) => {
-      if (time > 0) {
-        const hour = Math.floor(time / 3600);
-        const minute = Math.floor((time % 3600) / 60);
-        return (result = `${hour}hrs ${minute}min ago`);
-      } else {
-        return "Just Now Post";
-      }
-    };
+  if (data.data.length > 0) {
+    //   forEach categoryId
+    data.data.forEach((containerCardItem) => {
+      const div = document.createElement("div");
 
-    // card innerHtml 
-    div.innerHTML = `
+      // upload time
+      const uploadTime = (time) => {
+        if (time > 0) {
+          const hour = Math.floor(time / 3600);
+          const minute = Math.floor((time % 3600) / 60);
+          return (result = `${hour}hrs ${minute}min ago`);
+        } else {
+          return "Just Now Post";
+        }
+      };
+
+      // card innerHtml
+      div.innerHTML = `
     <div class="card shadow-xl">
                     <figure class="relative">
-                        <img class="h-60 px-5" src="${containerCardItem.thumbnail}" alt="${
-      containerCardItem.title
-    }" />
+                        <img class="h-60 px-5" src="${
+                          containerCardItem.thumbnail
+                        }" alt="${containerCardItem.title}" />
                         <div class="absolute bottom-2 right-5">
                             <p id="post-date" class="bg-[#171717] p-2 text-white text-xs font-normal rounded-md">${uploadTime(
                               containerCardItem?.others?.posted_date
@@ -71,7 +75,11 @@ const handleLoadData = async (categoryId) => {
                                 <p class="mt-1 text-sm font-normal text-[#111111B3]">${
                                   containerCardItem?.authors[0]?.profile_name
                                 }</p>
-                                <img id="blue-tik" src="${containerCardItem?.authors[0]?.verified ? 'img/bluetik.png' : ''}" alt="">
+                                <img id="blue-tik" src="${
+                                  containerCardItem?.authors[0]?.verified
+                                    ? "img/bluetik.png"
+                                    : ""
+                                }" alt="">
                                 </div>
                                 <p class="mt-1 text-sm font-normal text-[#111111B3]">${
                                   containerCardItem?.others?.views
@@ -81,9 +89,22 @@ const handleLoadData = async (categoryId) => {
                       </div>
                     </div>
         `;
-    // console.log(containerCardItem.authors);
-    cardContainer.appendChild(div);
-  });
+      // console.log(containerCardItem.authors);
+      cardContainer.appendChild(div);
+    });
+  } else {
+    const div = document.createElement("div");
+    div.innerHTML = `
+    <div class="flex justify-center">
+    <img src="img/Icon.png" alt="">
+</div>
+<div class="flex justify-center">
+    <h4 class="text-[#171717] text-3xl font-bold text-center mt-8">Oops!! Sorry, There is no <br>
+        content here</h4>
+</div>
+    `;
+    noDataContainer.appendChild(div);
+  }
 };
 
 handleLoadData("1000");
