@@ -20,25 +20,67 @@
       rel="stylesheet"
     />
     <style>
-        .font-inter{
-            font-family: 'Inter', sans-serif;
-        }
+      .font-inter {
+        font-family: "Inter", sans-serif;
+      }
     </style>
   </head>
   <body class="font-inter container mx-auto md:px-10">
     <!-- header  -->
-    <header>
-        <div class="navbar bg-base-100 p-12">
-            <div class="navbar-start">
-              <img src="img/Logo.png" alt="">
-            </div>
-            <div class="navbar-end">
-              <a class="font-medium text-lg bg-[#FF1F3D] px-4 py-2 rounded-lg text-white" href="index.html">Home</a>
-            </div>
-          </div>
-          <hr class="text-[#11111133]">
+    <header class="px-4">
+      <div class="navbar bg-base-100 p-12">
+        <div class="navbar-start">
+          <img src="img/Logo.png" alt="" />
+        </div>
+        <div class="navbar-end">
+          <a
+            class="font-medium text-lg bg-[#FF1F3D] px-4 py-2 rounded-lg text-white"
+            href="index.html"
+            >Home</a
+          >
+        </div>
+      </div>
+      <hr class="text-[#11111133]" />
     </header>
 
-    <main></main>
+    <main class="px-4">
+      <div class="collapse collapse-arrow bg-base-200">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-2xl font-semibold">
+          Discuss the scope of var, let, and const?
+        </div>
+        <div class="collapse-content">
+          <p class="text-xl font-medium">=> <br>
+            <strong>Var:</strong> var is a function scoped. It's value can be reassigned.
+            Values ​​declared with var can be used anywhere. <br>
+          <strong>Let:</strong> Let is a block scoped. It's value can be reassigned. It will give us an error if we try to access it before the declaration. <br>
+          <strong>Const:</strong> Const is a block scoped. It's value cannot be reassigned. It will give us an error if we try to access it before the declaration.
+          </p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-base-200 my-8">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-2xl font-semibold">
+          Tell us the use cases of null and undefined
+        </div>
+        <div class="collapse-content">
+          <p class="text-xl font-medium">=> <br>
+            <strong>Null:</strong> It is used to represent the absence of any object or value. It is often set as a value for variables or properties to indicate that they have no value. <br>
+            <strong>Undefined:</strong> It indicates a variable that has been declared but has not assigned a value.</p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-base-200">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-2xl font-semibold">
+          What do you mean by REST API?
+        </div>
+        <div class="collapse-content">
+          <p class="text-xl font-medium">=> REST API stands for Representational State Transfer Application
+            Programming Interface. It use HTTP requests to perform CRUD (Create, Read, Update, Delete) operations on resources. </p>
+        </div>
+      </div>
+    
+     
+    </main>
   </body>
 </html>

@@ -24,11 +24,16 @@ const handleLoadData = async (categoryId) => {
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
   );
   const data = await res.json();
+
   //   card container
-  console.log(data.data.length);
   const cardContainer = document.getElementById("card-container");
+
   // No data container
   const noDataContainer = document.getElementById("no-data");
+
+  // sort By View button
+  const sortByView = document.getElementById("sort-by-view");
+
   // click & clear card container
   cardContainer.innerHTML = "";
   noDataContainer.innerHTML = "";
@@ -104,6 +109,23 @@ const handleLoadData = async (categoryId) => {
 </div>
     `;
     noDataContainer.appendChild(div);
+  }
+
+  // google theka help niya
+
+  sortByView.addEventListener("click", function () {
+    const viewsArray = data.data.map((sortData) =>
+      parseFloat(sortData.others.views)
+    );
+    const view = viewsArray.sort((a, b) => b - a);
+    // console.log(view)
+    sortView(view);
+  });
+  function sortView(views){
+    views.forEach( (sort) => {
+      console.log(sort)
+      
+    });
   }
 };
 
