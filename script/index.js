@@ -31,9 +31,6 @@ const handleLoadData = async (categoryId) => {
   // No data container
   const noDataContainer = document.getElementById("no-data");
 
-  // sort By View button
-  const sortByView = document.getElementById("sort-by-view");
-
   // click & clear card container
   cardContainer.innerHTML = "";
   noDataContainer.innerHTML = "";
@@ -111,22 +108,55 @@ const handleLoadData = async (categoryId) => {
     noDataContainer.appendChild(div);
   }
 
-  // google theka help niya
+  // ...
 
-  sortByView.addEventListener("click", function () {
+  const sortViewButton = document.getElementById("sort-view-button");
+  sortViewButton.addEventListener("click", function () {
+    cardContainer.innerHTML = "";
+
     const viewsArray = data.data.map((sortData) =>
       parseFloat(sortData.others.views)
     );
-    const view = viewsArray.sort((a, b) => b - a);
-    // console.log(view)
-    sortView(view);
-  });
-  function sortView(views){
-    views.forEach( (sort) => {
-      console.log(sort)
-      
+    // console.log(viewsArray)
+    const sortedData = [...data.data];
+    sortedData.sort(
+      (a, b) => parseFloat(b.others.views) - parseFloat(a.others.views)
+    );
+
+    sortedData.forEach((sortContainerData) => {
+      console.log(sortContainerData);
+
+      const div = document.createElement("div");
+      div.innerHTML = `
+    
+    <div class="card  bg-base-100 shadow-xl">
+        <figure><img class="h-60 px-5" src="${sortContainerData.thumbnail}" alt="" /></figure>
+        <div class="card-body">
+          <div class=" flex items-start gap-4">
+            <img class="rounded-full w-12 h-12" src="${sortContainerData.authors[0]?.profile_picture}" />
+            <div class="">
+              <h4 class="text-base font-bold text-[#171717]">${sortContainerData.title}</h4>
+              <div class="flex gap-2">
+              <p class="mt-1 text-sm font-normal text-[#111111B3]">${sortContainerData.authors[0]?.profile_name}</p>
+              <img id="blue-tik" src="${
+                sortContainerData?.authors[0]?.verified
+                  ? "img/bluetik.png"
+                  : ""
+              }" alt="">
+              </div>
+              <p class="mt-1 text-sm font-normal text-[#111111B3]">${sortContainerData.others.views}</p>
+            </div>
+          </div>
+    </div>
+      </div>  
+                    
+        `;
+
+      cardContainer.appendChild(div);
     });
-  }
+  });
+
+  // ...
 };
 
 handleLoadData("1000");
