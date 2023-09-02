@@ -41,13 +41,14 @@ const handleLoadData = async (categoryId) => {
       const div = document.createElement("div");
 
       // upload time
+      const postDate = document.getElementById('post-date');
       const uploadTime = (time) => {
         if (time > 0) {
           const hour = Math.floor(time / 3600);
           const minute = Math.floor((time % 3600) / 60);
           return (result = `${hour}hrs ${minute}min ago`);
         } else {
-          return "Just Now Post";
+          return 'Just Now Post'
         }
       };
 
@@ -59,7 +60,7 @@ const handleLoadData = async (categoryId) => {
                           containerCardItem.thumbnail
                         }" alt="${containerCardItem.title}" />
                         <div class="absolute bottom-2 right-5">
-                            <p id="post-date" class="bg-[#171717] p-2 text-white text-xs font-normal rounded-md">${uploadTime(
+                            <p id="post-date" class="bg-[#171717] p-2 text-white text-xs font-normal rounded-md ">${ uploadTime(
                               containerCardItem?.others?.posted_date
                             )}</p></div>
                     </figure>
@@ -108,16 +109,13 @@ const handleLoadData = async (categoryId) => {
     noDataContainer.appendChild(div);
   }
 
-  // ...
+  // sort by view 
+  // google + youtube help niya 
 
   const sortViewButton = document.getElementById("sort-view-button");
   sortViewButton.addEventListener("click", function () {
     cardContainer.innerHTML = "";
 
-    const viewsArray = data.data.map((sortData) =>
-      parseFloat(sortData.others.views)
-    );
-    // console.log(viewsArray)
     const sortedData = [...data.data];
     sortedData.sort(
       (a, b) => parseFloat(b.others.views) - parseFloat(a.others.views)
@@ -156,7 +154,6 @@ const handleLoadData = async (categoryId) => {
     });
   });
 
-  // ...
 };
 
 handleLoadData("1000");
